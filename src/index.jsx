@@ -7,6 +7,9 @@ import reportWebVitals from './reportWebVitals'
 import { createBrowserHistory } from 'history'
 
 export const history = createBrowserHistory()
+history.listen((location, action) => {
+  window.scrollTo(0, 0);
+});
 
 ReactDOM.render(
   <StoreContext.Provider value={store}>
