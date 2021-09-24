@@ -1,0 +1,125 @@
+@mixin bg-img {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#homeSlider {
+    .rsContent {
+        opacity: 0;
+        .background-image {
+            @include bg-img;
+            position: absolute;
+            filter: blur(2px);
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+        &.isActive {
+            animation: fadein 800ms;
+            animation-fill-mode: forwards;
+        }
+        &.inactive {
+            animation: fadeout 600ms;
+            animation-delay: 200ms;
+            animation-fill-mode: backwards;
+            .SlideTitleContainer {
+                opacity: 0;
+            }
+        }
+    }
+
+    .rsSlide {
+        transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        transition-duration: 600ms;
+    }
+
+    .SlideTitleContainer {
+        transition-property: -webkit-transform, opacity;
+        transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+        transition: margin 600ms;
+        margin-top: -30px;
+        &.isActive {
+            margin-top: 0;
+        }
+    }
+    .rsOverflow {
+        background-color: orange;
+    }
+}
+.recipe-box-content {
+    .text-clapm {
+        min-height: 74px;
+        display: block;
+        border-bottom: 1px solid #e5e5e5;
+        margin: 0 0 15px 0;
+        padding: 0 0 22px 0;
+    }
+}
+.thumbnail-holder,
+.recipeSlider {
+    @include bg-img;
+}
+
+.recipeBackground:before {
+    content: "";
+    background-color: orange;
+    opacity: 1;
+}
+
+.recipe-card {
+    .thumbnail-box {
+        @include bg-img;
+        height: 160px;
+    }
+    .recipe-box-content {
+        padding: 20px 16px 16px;
+        overflow: hidden;
+        max-width: 100%;
+    }
+}
+#navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 74px;
+    width: 100%;
+    max-width: 400px;
+}
+#header {
+    z-index: 9900;
+}
+
+@media only screen and (min-width: 1389px) {
+    .rsOverflow {
+        width: "100%";
+        height: 515px;
+    }
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1389px) {
+    .recipe-meta-user {
+        display: none;
+    }
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@import "autocomplete";
