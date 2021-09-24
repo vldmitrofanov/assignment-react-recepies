@@ -9,8 +9,8 @@ const sleep = (delay) => {
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL
 
 axios.interceptors.response.use(async (response) => {
-  const isProd = process.env.REACT_APP_PRODUCTION
-  if (!isProd) {
+  const isDev = process.env.REACT_APP_DEVELOPMENT
+  if (!isDev) {
     await sleep(1000)
   }
   return response
