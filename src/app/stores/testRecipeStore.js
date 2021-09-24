@@ -45,6 +45,7 @@ export default class TestRecipeStore {
 
   loadFeaturedTestRecipies = async (page = 1) => {
     this.loadingFeaturedRecepies = true
+    this.featuredTestRecipeRegistry = new Array();
     try {
       const response = await agent.TestRecipies.listFeatured(page)
       runInAction(() => {
