@@ -25,7 +25,7 @@ export default observer(function TestRecipeDetailsPage() {
 
   useEffect(() => {
     if (featuredTestRecipies.length <= 1) loadFeaturedTestRecipies()
-  }, [featuredTestRecipies, loadFeaturedTestRecipies])
+  }, [])
 
   return (
     <Fragment>

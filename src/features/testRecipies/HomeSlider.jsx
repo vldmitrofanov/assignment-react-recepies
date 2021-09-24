@@ -11,7 +11,7 @@ export default observer(function HomeSlider() {
 
   useEffect(() => {
     if (featuredTestRecipies.length <= 1) loadFeaturedTestRecipies()
-  }, [featuredTestRecipies, loadFeaturedTestRecipies])
+  }, [])
 
   return (
     <div id="homeSlider" className="royalSlider rsDefaultInv">
