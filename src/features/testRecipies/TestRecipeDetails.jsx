@@ -11,6 +11,10 @@ export default observer(function TestRecipeDetails({
   recipe,
   featuredRecipies,
 }) {
+  function handlePrint(e) {
+    e.preventDefault();
+    window.print()
+  }
   return (
     <div className="twelve columns">
       <div className="alignment">
@@ -35,23 +39,22 @@ export default observer(function TestRecipeDetails({
           }}
         ></div>
 
-        <section className="recipe-details" >
+        <section className="recipe-details">
           <ul>
             <li>
-              Serves:{' '}
-              <strong >{recipe.servings} people</strong>
+              Serves: <strong>{recipe.servings} people</strong>
             </li>
             <li>
-              Cooking: <strong >{recipe.cookingTime}</strong>
+              Cooking: <strong>{recipe.cookingTime}</strong>
             </li>
           </ul>
-          <a href="#" className="print">
+          <a href="#" className="print" onClick={handlePrint}>
             <i className="fa fa-print"></i> Print
           </a>
           <div className="clearfix"></div>
         </section>
 
-        <p >{recipe.post_excerpt}</p>
+        <p>{recipe.post_excerpt}</p>
 
         <h3>Directions</h3>
         <div
@@ -64,11 +67,7 @@ export default observer(function TestRecipeDetails({
         <div className="clearfix"></div>
 
         <div className="post-meta">
-          By{' '}
-          <a href="#" >
-            {recipe.user_display_name}
-          </a>
-          , on{' '}
+          By <a href="#">{recipe.user_display_name}</a>, on{' '}
           <span content="2014-30-10">
             {format(new Date(recipe.post_date_gmt), 'dd MMM yyyy')}
           </span>
@@ -85,7 +84,12 @@ export default observer(function TestRecipeDetails({
             <div className="related-posts">
               {featuredRecipies.map((featuredRecipe, index) => {
                 if (index < 3)
-                  return <TestRecipeCard recipe={featuredRecipe} key={`trc${index}`} />
+                  return (
+                    <TestRecipeCard
+                      recipe={featuredRecipe}
+                      key={`trc${index}`}
+                    />
+                  )
               })}
             </div>
             <div className="clearfix"></div>
